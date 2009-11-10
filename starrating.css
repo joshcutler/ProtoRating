@@ -3,14 +3,15 @@ ul.star-list li.star
   height:16px;
   width:16px;
   float:left;
+  cursor:pointer;
 }
 
 ul.star-list li.unchecked
 {
-  background:#666666;
+  background: url(/images/new_ui/icon_star_norm.gif)
 }
 
 ul.star-list li.checked
 {
-  background:red;
+  background: url(/images/new_ui/icon_star_hover.gif)
 }
