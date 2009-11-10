@@ -1,0 +1,16 @@
+ul.star-list li.star
+{
+  height:16px;
+  width:16px;
+  float:left;
+}
+
+ul.star-list li.unchecked
+{
+  background:#666666;
+}
+
+ul.star-list li.checked
+{
+  background:red;
+}
