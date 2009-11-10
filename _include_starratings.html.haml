@@ -5,7 +5,7 @@
   :javascript
     document.observe('dom:loaded', function() {
       $$("#starrating").each( function(list) {
-      		new StarRating(list, {label_id: "rating-label", hidden_field_id: "hidden_test"});
+      		new StarRating(list, {label_id: '#{label_id}', hidden_field_id: '#{hidden_field_id}'});
       	});
     });
     

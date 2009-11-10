@@ -18,7 +18,7 @@ StarRating.prototype = {
     this.initialized = false;
 		this.setOptions(options);
 		this.el.addClassName('star-list');
-		this.stars = this.el.descendants();
+		this.stars = this.el.select('li');
 		
 		handler_class = this
 		this.stars.each( function(li) {
@@ -40,8 +40,9 @@ StarRating.prototype = {
   setOptions: function(options) {
 		this.options = {
 		  value: 0,
-		  label_id: null,         //Default value of this star rating
-		  hidden_field_id: null   //Stores the value of the control
+		  label_id: null,             //Default value of this star rating
+		  hidden_field_id: null,      //Stores the value of the control
+		  reset_label_text: "Unrated"   
 		};
 		Object.extend(this.options, options || {});
 	},
@@ -63,7 +64,7 @@ StarRating.prototype = {
 	  //Special case blank
 	  if (this.options.value == 0)
 	  {
-	    this.drawLabel("")
+	    this.drawLabel(this.options.reset_label_text)
 	  }
 	  this.set_hidden_value(this.options.value)
 	},
