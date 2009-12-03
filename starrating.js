@@ -22,17 +22,27 @@ StarRating.prototype = {
 		
 		handler_class = this
 		this.stars.each( function(li) {
-		  li.addClassName('star')
+		  if (handler_class.options.read_only)
+		  {
+		    li.addClassName('star-readonly');
+	    }
+		  else
+		  {
+		    li.addClassName('star');
+	    }
 		  //Write the value
 		  Element.writeAttribute(li, {value: li.innerHTML})
 		  li.value = li.innerHTML
 		  li.label_value = Element.readAttribute(li, "label")
 		  li.innerHTML = ""
-		  		  
-		  li.observe("mouseover", handler_class.hover);
-		  li.observe("mouseout", handler_class.unhover);
-		  li.observe("click", handler_class.lock_in);
-		  li.parent_class = handler_class;
+		  
+		  if (!handler_class.options.read_only)
+		  {
+		    li.observe("mouseover", handler_class.hover);
+		    li.observe("mouseout", handler_class.unhover);
+		    li.observe("click", handler_class.lock_in);
+		    li.parent_class = handler_class;
+		  }
 		});
 		
 		this.reset();
@@ -42,6 +52,7 @@ StarRating.prototype = {
 		  value: 0,
 		  label_id: null,             //Default value of this star rating
 		  hidden_field_id: null,      //Stores the value of the control
+		  read_only: false,
 		  reset_label_text: "Unrated"   
 		};
 		Object.extend(this.options, options || {});
@@ -97,7 +108,7 @@ StarRating.prototype = {
 	},
 	set_hidden_value: function(value)
 	{
-	  if (this.options.hidden_field_id)
+	  if (this.options.hidden_field_id && $(this.options.hidden_field_id))
 	  {
 	    $(this.options.hidden_field_id).value = value
 	  }

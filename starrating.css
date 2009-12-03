@@ -1,4 +1,4 @@
-ul.star-list li.star
+ul.star-list li.star, ul.star-list li.star-readonly
 {
   height:16px !important;
   width:16px !important;
@@ -6,14 +6,20 @@ ul.star-list li.star
   margin: 0 !important;
   float:left;
   cursor:pointer;
+  clear:none;
+}
+
+ul.star-list li.star-readonly
+{
+  cursor: default;
 }
 
 ul.star-list li.unchecked
 {
-  background: url(icon_star_norm.gif)
+  background: url(/images/new_ui/icon_star_norm.gif)
 }
 
 ul.star-list li.checked
 {
-  background: url(icon_star_hover.gif)
+  background: url(/images/new_ui/icon_star_hover.gif)
 }
